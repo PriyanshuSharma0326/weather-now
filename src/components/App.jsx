@@ -39,7 +39,7 @@ export default function App() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + Location + "&units=metric&appid=" + process.env.REACT_APP_WEATHER_API_KEY).then(
+        axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + Location + "&units=metric&appid=fc388d1fbee83420800b7942280eb40f").then(
             (response) => {
                 setWeather({
                     weatherDescription: response.data.weather[0].main,

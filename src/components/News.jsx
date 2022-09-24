@@ -13,7 +13,7 @@ export default function News() {
     });
 
     useEffect(() => {
-        axios.get("https://newsapi.org/v2/everything?q=Apple&from=2022-09-22&sortBy=popularity&apiKey=" + process.env.REACT_APP_NEWS_API_KEY).then(
+        axios.get("https://newsapi.org/v2/everything?q=Apple&from=2022-09-22&sortBy=popularity&apiKey=54780f5aab7c4df9a8ba208fbbc0b17d").then(
             (response) => {
                 setNews({
                     newsTitle: response.data.articles[0].title,
