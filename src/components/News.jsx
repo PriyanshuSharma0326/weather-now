@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,7 +14,7 @@ export default function News(props) {
                         <FontAwesomeIcon icon={faNewspaper} className='text-[#444]' /> View Full Coverage
                     </a>
                 </div>
-                <img className='h-full my-auto w-1/4 rounded-xl' src={props.image} />
+                <img className='h-full my-auto w-1/4 rounded-xl' src={props.image} alt='news-icon' />
             </div>
         </div>
     );
