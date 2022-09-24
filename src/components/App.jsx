@@ -36,14 +36,6 @@ export default function App() {
         altText: ""
     });
 
-    const [news, setNews] = useState({
-        newsTitle: "",
-        newsDesc: "",
-        newsImage: "",
-        newsLink: "",
-        newsSource: ""
-    });
-
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -54,19 +46,6 @@ export default function App() {
                     temperature: response.data.main.temp,
                     iconURL: "http://openweathermap.org/img/wn/" + response.data.weather[0].icon + "@2x.png",
                     altText: response.data.weather[0].description
-                });
-                setError(null);
-            }
-        ).catch(setError);
-
-        axios.get("https://newsapi.org/v2/everything?q=Apple&from=2022-09-22&sortBy=popularity&apiKey=54780f5aab7c4df9a8ba208fbbc0b17d").then(
-            (response) => {
-                setNews({
-                    newsTitle: response.data.articles[0].title,
-                    newsDesc: response.data.articles[0].description,
-                    newsImage: response.data.articles[0].urlToImage,
-                    newsLink: response.data.articles[0].url,
-                    newsSource: response.data.articles[0].source.name
                 });
                 setError(null);
             }
@@ -102,14 +81,6 @@ export default function App() {
 
                 <Videos />
             </div>
-
-            <News 
-                title={news.newsTitle}
-                source={news.newsSource}
-                desc={news.newsDesc}
-                link={news.newsLink}
-                image={news.newsImage}
-            />
         </div>
     );
 }
