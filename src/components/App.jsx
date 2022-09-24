@@ -5,7 +5,6 @@ import Header from './Header';
 import SearchBar from './SearchBar';
 import WeatherInfo from './WeatherInfo';
 import Videos from './Videos';
-import News from './News';
 
 export default function App() {
     const today = new Date();
