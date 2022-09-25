@@ -7,6 +7,7 @@ export default function SearchBar(props) {
         <div className='mt-8 relative px-4 md:pt-12 md:px-40 lg:px-80'>
             <input 
                 onChange={props.handleChange} 
+                onKeyPress={props.handleKeyPress} 
                 className='rounded-[4px] w-full h-12 p-4 z-0 outline-none' 
                 placeholder='Search Location' 
                 value={props.inputTextValue}

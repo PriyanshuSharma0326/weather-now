@@ -28,6 +28,12 @@ export default function App() {
         }
     }
 
+    function keyPressed(event) {
+        if(event.key === "Enter") {
+            getLocation();
+        }
+    }
+
     const [weather, setWeather] = useState({
         temperature: "",
         weatherDescription: "",
@@ -43,7 +49,7 @@ export default function App() {
         if(inputValue === "" && Location === "") {
             Location = "Delhi";
         }
-        
+
         axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + Location + "&units=metric&appid=fc388d1fbee83420800b7942280eb40f").then(
             (response) => {
                 setWeather({
@@ -69,6 +75,7 @@ export default function App() {
                 <SearchBar
                     handleChange={getValue}
                     handleClick={getLocation}
+                    handleKeyPress={keyPressed}
                     inputTextValue={inputValue}
                 />
             </div>
