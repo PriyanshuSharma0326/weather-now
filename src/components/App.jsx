@@ -4,7 +4,6 @@ import axios from 'axios';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import WeatherInfo from './WeatherInfo';
-import Videos from './Videos';
 
 export default function App() {
     const today = new Date();
@@ -57,17 +56,24 @@ export default function App() {
         <div>
             <Header />
 
-            <SearchBar
-                textValue={inputValue}
-                handleChange={getValue}
-                handleClick={getLocation}
-            />
+            <div className='m-auto text-center'>
+                <SearchBar
+                    textValue={inputValue}
+                    handleChange={getValue}
+                    handleClick={getLocation}
+                />
+            </div>
 
-            <div className='inline-block md:flex w-full'>
-                <div className='w-full md:w-1/2 my-6 border-[2px] rounded-xl'>
-                    <div className='ml-4 mt-4'>
-                        <h1 className='text-[1.8rem]'>{today.toLocaleDateString('en-IN', options)}.</h1>
-                        <h2 className='text-[1.3rem] text-[dimgray]'>{Location.replace("%20", " ")}</h2>
+            <h1 className='
+                text-left mt-4 px-4
+                text-[1.5rem]
+                text-white'>{today.toLocaleDateString('en-IN', options)}.
+            </h1>
+
+            <div className='inline-block md:flex w-full px-4'>
+                <div className='mt-6 rounded-[4px] bg-white bg-opacity-[60%] flex'>
+                    <div className='ml-4 my-auto'>
+                        <h2 className='text-[1.2rem] text-[#222]'>{Location.replace("%20", " ")}</h2>
                     </div>
 
                     <WeatherInfo 
@@ -77,8 +83,6 @@ export default function App() {
                         altText={weather.altText}
                     />
                 </div>
-
-                <Videos />
             </div>
         </div>
     );

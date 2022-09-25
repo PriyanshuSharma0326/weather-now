@@ -2,20 +2,20 @@ import React from 'react';
 
 export default function WeatherInfo(props) {
     return (
-        <div className='flex pb-6'>
-            <div className='w-1/2'>
+        <div className='flex ml-auto'>
+            <div>
                 <img 
-                    className='lg:max-w-full lg:max-h-full mx-auto mt-4'
+                    className='w-[50%] h-auto mx-auto'
                     src={props.url}
                     alt={props.altText}
                 />
             </div>
-            <div className='text-center items-center justify-center inline-block lg:m-0'>
+            <div className='ml-auto my-auto pr-4'>
                 <div>
-                    <h1 className='text-[3.5rem]'>{props.temp}</h1>
+                    <h1 className='text-[1.4rem] font-bold'>{props.temp}</h1>
                 </div>
                 <div>
-                    <h2 className='text-[1.8rem] opacity-70'>{props.description}</h2>
+                    <h2 className='text-[1.8rem] hidden'>{props.description}</h2>
                 </div>
             </div>
         </div>
