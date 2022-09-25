@@ -4,17 +4,20 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export default function SearchBar(props) {
     return (
-        <div className='mt-8'>
+        <div className='mt-8 relative px-4'>
             <input onChange={props.handleChange} className='
             rounded-[4px] 
-            w-[18rem] 
+            w-full
             h-12 
             p-4 
+            z-0 
             outline-none' 
             placeholder='Search Location' />
-            <button onClick={props.handleClick} className='w-12 h-12 ml-3'>
-                <FontAwesomeIcon icon={faMagnifyingGlass} className='text-white' />
-            </button>
+            <div className='absolute top-0 right-4'>
+                <button onClick={props.handleClick} className='h-12 w-12'>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className='text-black' />
+                </button>
+            </div>
         </div>
     );
 }
