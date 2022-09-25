@@ -10,7 +10,7 @@ export default function App() {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     const [inputValue, setInputValue] = useState("");
-    const [Location, setLocation] = useState("Delhi");
+    var [Location, setLocation] = useState("");
 
     function getValue(event) {
         const newValue = event.target.value;
@@ -23,7 +23,6 @@ export default function App() {
         }
         else {
             setLocation(inputValue);
-            setInputValue("");
         }
     }
 
@@ -31,19 +30,28 @@ export default function App() {
         temperature: "",
         weatherDescription: "",
         iconURL: "",
-        altText: ""
+        altText: "",
+        location: "",
+        feelsLike: ""
     });
 
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        if(inputValue === "") {
+            Location = "Delhi";
+        } else if(Location === "") {
+            Location = this.weather.location;
+        }
         axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + Location + "&units=metric&appid=fc388d1fbee83420800b7942280eb40f").then(
             (response) => {
                 setWeather({
                     weatherDescription: response.data.weather[0].main,
                     temperature: response.data.main.temp,
                     iconURL: "http://openweathermap.org/img/wn/" + response.data.weather[0].icon + "@2x.png",
-                    altText: response.data.weather[0].description
+                    altText: response.data.weather[0].description,
+                    location: response.data.name,
+                    feelsLike: response.data.main.feels_like
                 });
                 setError(null);
             }
@@ -65,15 +73,19 @@ export default function App() {
             </div>
 
             <h1 className='
-                text-left mt-4 px-4
+                text-left 
+                mt-4 
+                px-4 
+                md:px-40
+                lg:px-80
                 text-[1.5rem]
                 text-white'>{today.toLocaleDateString('en-IN', options)}.
             </h1>
 
-            <div className='inline-block md:flex w-full px-4'>
-                <div className='mt-6 rounded-[4px] bg-white bg-opacity-[60%] flex'>
-                    <div className='ml-4 my-auto'>
-                        <h2 className='text-[1.2rem] text-[#222]'>{Location.replace("%20", " ")}</h2>
+            <div className='w-full px-4 md:px-40 lg:px-80'>
+                <div className='mt-6 rounded-[4px] bg-white bg-opacity-[60%] lg:inline-block flex'>
+                    <div className='ml-4 my-auto lg:mt-2'>
+                        <h2 className='text-[1.2rem] lg:text-[1.4rem] text-[#222]'>{weather.location}</h2>
                     </div>
 
                     <WeatherInfo 
@@ -81,6 +93,8 @@ export default function App() {
                         description={weather.weatherDescription}
                         url={weather.iconURL}
                         altText={weather.altText}
+                        feels_like={weather.feelsLike}
+                        inputTextValue={inputValue}
                     />
                 </div>
             </div>
