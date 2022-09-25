@@ -14,15 +14,17 @@ export default function App() {
 
     function getValue(event) {
         const newValue = event.target.value;
-        setInputValue(encodeURIComponent(newValue.trim()));
+        setInputValue(newValue);
     }
-    
+
     function getLocation() {
         if(inputValue === "") {
             alert("Enter a location!");
         }
         else {
-            setLocation(inputValue);
+            const newLocation = encodeURIComponent(inputValue.trim());
+            setLocation(newLocation);
+            setInputValue("");
         }
     }
 
@@ -38,11 +40,10 @@ export default function App() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if(inputValue === "") {
+        if(inputValue === "" && Location === "") {
             Location = "Delhi";
-        } else if(Location === "") {
-            Location = this.weather.location;
         }
+        
         axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + Location + "&units=metric&appid=fc388d1fbee83420800b7942280eb40f").then(
             (response) => {
                 setWeather({
@@ -66,9 +67,9 @@ export default function App() {
 
             <div className='m-auto text-center'>
                 <SearchBar
-                    textValue={inputValue}
                     handleChange={getValue}
                     handleClick={getLocation}
+                    inputTextValue={inputValue}
                 />
             </div>
 
@@ -94,7 +95,6 @@ export default function App() {
                         url={weather.iconURL}
                         altText={weather.altText}
                         feels_like={weather.feelsLike}
-                        inputTextValue={inputValue}
                     />
                 </div>
             </div>
