@@ -50,7 +50,7 @@ export default function App() {
             Location = "Delhi";
         }
 
-        axios.get("https://api.openweathermap.org/data/2.5/weather?q=" + Location + "&units=metric&appid=fc388d1fbee83420800b7942280eb40f").then(
+        axios.get(`${process.env.REACT_APP_OPENWEATHER_URL}?q=${Location}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`).then(
             (response) => {
                 setWeather({
                     weatherDescription: response.data.weather[0].main,
