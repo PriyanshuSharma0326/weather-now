@@ -4,8 +4,9 @@ import axios from 'axios';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import WeatherInfo from './WeatherInfo';
+import Error from './Error/Error';
 
-const dotenv = require('dotenv').config();
+// const dotenv = require('dotenv').config();
 
 export default function App() {
     const today = new Date();
@@ -30,7 +31,7 @@ export default function App() {
         }
     }
 
-    function keyPressed(event) {
+    function keyDown(event) {
         if(event.key === "Enter") {
             getLocation();
         }
@@ -67,7 +68,10 @@ export default function App() {
         ).catch(setError);
     }, [Location]);
 
-    if (error) return <p>An error occurred</p>
+    if (error)
+    {
+        return <Error />
+    }
 
     return (
         <div>
@@ -77,7 +81,7 @@ export default function App() {
                 <SearchBar
                     handleChange={getValue}
                     handleClick={getLocation}
-                    handleKeyPress={keyPressed}
+                    handleKeyDown={keyDown}
                     inputTextValue={inputValue}
                 />
             </div>
