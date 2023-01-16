@@ -4,9 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import WeatherInfo from './WeatherInfo';
-import Error from './Error/Error';
-
-// const dotenv = require('dotenv').config();
+import Error from '../pages/Error';
 
 export default function App() {
     const today = new Date();
@@ -70,7 +68,7 @@ export default function App() {
 
     if (error)
     {
-        return <Error />
+        return (<Error />);
     }
 
     return (
