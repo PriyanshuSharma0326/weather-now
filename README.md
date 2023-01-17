@@ -26,6 +26,7 @@ Install dependencies
   npm i --save @fortawesome/react-fontawesome@latest
   npm install -D tailwindcss
   npx tailwindcss init
+  npm i axios
 ```
 
 Start the server
