@@ -3,6 +3,8 @@
 
 This is a simple and responsive weather application built on React library and designed with TailwindCSS. You can search for weather information for any city in the world, the default being Delhi.
 
+![Site preview](https://api.pikwy.com/web/642d498f060c674f9a61cf50.jpg)
+
 
 ## Run Locally
 
